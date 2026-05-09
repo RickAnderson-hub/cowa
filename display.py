@@ -144,6 +144,26 @@ def print_win_screen(player_name: str):
     print()
 
 
+def print_lose_screen(player_name: str, reason: str = ""):
+    clear_screen()
+    banner = [
+        "  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X",
+        "                                                              ",
+        "           *   M I S S I O N   F A I L E D   *               ",
+        "                                                              ",
+        f"       Don't give up, {player_name}! Try again!             ",
+        "                                                              ",
+        "  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X",
+    ]
+    print()
+    for line in banner:
+        print(_ansi(BOLD + RED, line))
+    if reason:
+        print()
+        print(_ansi(DIM, f"  ({reason})"))
+    print()
+
+
 def print_separator():
     print(_ansi(DIM, "  " + "─" * 68))
 

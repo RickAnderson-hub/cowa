@@ -53,10 +53,32 @@ def run_game(state: dict, adventure: dict) -> str:
             display.pause("  [Press Enter to return to the main menu...]")
             return "menu"
 
+        if scene.get("ending") == "lose":
+            display.print_lose_screen(state["player_name"], scene.get("lose_reason", ""))
+            save_load.autosave(state)
+            display.pause("  [Press Enter to return to the main menu...]")
+            return "menu"
+
         # Build choice list
         choices = scene.get("choices", [])
         if not choices:
             display.pause()
+            return "menu"
+
+        # If every choice is locked, the player can't progress — show a lose screen
+        all_locked = all(
+            bool(c.get("requires_item") and not inv.has(c["requires_item"]))
+            for c in choices
+        )
+        if all_locked:
+            missing = [
+                items.get(c["requires_item"], {}).get("name", c["requires_item"])
+                for c in choices if c.get("requires_item")
+            ]
+            reason = f"You needed: {', '.join(dict.fromkeys(missing))}" if missing else ""
+            display.print_lose_screen(state["player_name"], reason)
+            save_load.autosave(state)
+            display.pause("  [Press Enter to return to the main menu...]")
             return "menu"
 
         # Show choices

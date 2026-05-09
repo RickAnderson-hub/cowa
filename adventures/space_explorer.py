@@ -90,25 +90,60 @@ STORY = {
             "The Shooting Star gleams in the morning sunlight. It's silver and "
             "blue with a big star painted on the side. Steam hisses from the "
             "engines. The countdown clock reads T-minus 10 minutes!\n\n"
-            "A space suit hangs by the hatch. Next to it is a black briefcase "
-            "labeled 'MISSION BRIEFING — TOP SECRET'.\n\n"
-            "What do you do first?"
+            "Hanging by the hatch is your space suit — and clipped to it, "
+            "a Space Suit Patch kit. Standard issue for every mission. "
+            "Next to it is a black briefcase labeled 'MISSION BRIEFING — TOP SECRET'.\n\n"
+            "You grab the patch kit and clip it to your belt. You'll want that "
+            "if anything goes wrong out there.\n\n"
+            "What do you do next?"
         ),
         "choices": [
             {
                 "label": "Climb straight into the rocket — no time to waste!",
                 "next": "ch1_inside_rocket",
                 "requires_item": None,
-                "gives_item": None,
+                "gives_item": "space_suit_patch",
             },
             {
                 "label": "Check the mission briefcase first.",
                 "next": "ch1_briefcase",
                 "requires_item": None,
-                "gives_item": None,
+                "gives_item": "space_suit_patch",
+            },
+            {
+                "label": "Chat with the launch technician — ask if the ship is ready.",
+                "next": "ch1_launch_chat",
+                "requires_item": None,
+                "gives_item": "space_suit_patch",
             },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "ch1_launch_chat": {
+        "id": "ch1_launch_chat",
+        "chapter": 1,
+        "chapter_title": "Blast Off!",
+        "title": "A Word with the Technician",
+        "text": (
+            "The launch technician turns around. He has a clipboard, a hard hat "
+            "slightly too big for his head, and the expression of someone who "
+            "has not slept in several days.\n\n"
+            "'Is the ship ready?' you ask.\n\n"
+            "He looks at the clipboard. Then at the ship. Then at the clipboard again.\n\n"
+            "'Okay so,' he says, 'the main engines are DEFINITELY fine. "
+            "The fuel gauge is... probably accurate. The autopilot has some "
+            "quirks but nothing major. And that rattling noise? Classic. "
+            "Classic rocket noise. Very normal. Nothing to worry about.'\n\n"
+            "He pats you firmly on the shoulder.\n\n"
+            "'You are going to be GREAT. Probably. We believe in you. "
+            "I believe in you. The whole team believes in you. "
+            "Now please get in the rocket before I think about it too hard.'\n\n"
+            "Somehow, you feel completely ready."
+        ),
+        "choices": [],
+        "auto_next": "ch1_inside_rocket",
         "ending": None,
     },
 
@@ -166,9 +201,44 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Just pull the launch lever — that noise is DEFINITELY fine.",
+                "next": "ch1_reckless_launch",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "ch1_reckless_launch": {
+        "id": "ch1_reckless_launch",
+        "chapter": 1,
+        "chapter_title": "Blast Off!",
+        "title": "That Was Not Fine.",
+        "text": (
+            "You grab the big red lever labeled LAUNCH and YANK.\n\n"
+            "For a moment, nothing happens.\n\n"
+            "Then the weird engine noise goes from 'concerning' to 'ALARMING' "
+            "to 'EXTREMELY NOT GOOD' in about two seconds. "
+            "The whole rocket starts to shake. Then rattle. "
+            "Then shake AND rattle simultaneously.\n\n"
+            "Mission Control: 'Explorer, we're picking up some unusual "
+            "engine readings—'\n\n"
+            "BANG.\n\n"
+            "Not a small bang. A VERY LARGE BANG.\n\n"
+            "The Shooting Star tips sideways off the launch pad. "
+            "Very slowly. In complete silence.\n\n"
+            "It lands with an enormous crash. Steam everywhere. "
+            "Somewhere, an alarm is going off very sadly.\n\n"
+            "Mission Control says nothing for a very long time.\n\n"
+            "Then, quietly: '...We may need to reschedule the mission.'"
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "Always check your engine before launching!",
     },
 
     "ch1_call_control": {
@@ -206,19 +276,21 @@ STORY = {
         "text": (
             "You crawl under the rocket with a flashlight. The engine looks "
             "fine... except for a small tear in the heat shield. You dig "
-            "through the toolkit and find a roll of space-grade sticky patches.\n\n"
+            "through the toolkit and find a roll of space-grade sticky patches — "
+            "and tucked right at the back, a Stun Blaster, still in its case. "
+            "Standard issue for alien encounters, apparently.\n\n"
             "PATCH! PATCH! PATCH!\n\n"
-            "You slap three patches on and shimmy back inside. The rattling stops.\n\n"
+            "You slap three patches on the heat shield and shimmy back inside. "
+            "The rattling stops. You pocket the Stun Blaster.\n\n"
             "Mission Control cheers: 'AMAZING! You fixed it! You are genuinely "
-            "the best space explorer we have ever sent into space!'\n\n"
-            "You keep one extra patch. Just in case."
+            "the best space explorer we have ever sent into space!'"
         ),
         "choices": [
             {
                 "label": "Get back in the pilot seat — it's launch time!",
                 "next": "ch1_countdown",
                 "requires_item": None,
-                "gives_item": "space_suit_patch",
+                "gives_item": "stun_blaster",
             },
         ],
         "auto_next": None,
@@ -276,8 +348,37 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Check the Mission Map — maybe there's a safe route through.",
+                "next": "ch1_map_shortcut",
+                "requires_item": "mission_map",
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "ch1_map_shortcut": {
+        "id": "ch1_map_shortcut",
+        "chapter": 1,
+        "chapter_title": "Blast Off!",
+        "title": "Hidden Corridor!",
+        "text": (
+            "You unfold the star chart. There — almost invisible among the "
+            "asteroid density lines — a thin dotted path marked in green ink. "
+            "A hidden corridor, carved out by an ancient comet millions of "
+            "years ago. The rocks here are sparse, the gaps wide.\n\n"
+            "You ease the Shooting Star into the corridor. "
+            "Giant glittering asteroids drift past on either side, close enough "
+            "to see their craters, but never close enough to hit. "
+            "One is shaped like a rubber duck. You take a photo.\n\n"
+            "And then — open space. The belt is behind you, "
+            "and the ship doesn't have a scratch.\n\n"
+            "'Explorer,' says Mission Control, 'that was SMOOTH.'"
+        ),
+        "choices": [],
+        "auto_next": "ch1_deep_space",
         "ending": None,
     },
 
@@ -327,7 +428,7 @@ STORY = {
             "Air is hissing out into space. The oxygen gauge is dropping fast.\n\n"
             "Mission Control, very fast: 'Explorer. Hull breach confirmed. "
             "Oxygen dropping. You have three minutes. SEAL IT NOW.'\n\n"
-            "You scan the cockpit. Two options."
+            "You scan the cockpit. You have to act NOW."
         ),
         "choices": [
             {
@@ -343,9 +444,40 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Ignore it — you'll deal with it later.",
+                "next": "ch1_death_oxygen",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "ch1_death_oxygen": {
+        "id": "ch1_death_oxygen",
+        "chapter": 1,
+        "chapter_title": "Blast Off!",
+        "title": "Out of Air...",
+        "text": (
+            "You decide to deal with the hull breach later.\n\n"
+            "That was a mistake.\n\n"
+            "The oxygen gauge drops. 50%. 40%. You start to feel dizzy. "
+            "The lights seem brighter. Your fingers go a little numb.\n\n"
+            "30%.\n\n"
+            "Mission Control is shouting but it sounds far away, like they're "
+            "at the other end of a very long corridor.\n\n"
+            "20%.\n\n"
+            "You reach toward the controls. Your hand moves very slowly.\n\n"
+            "The stars outside are very beautiful. You think about that.\n\n"
+            "You take a breath. There's almost nothing to breathe.\n\n"
+            "The Shooting Star drifts on, quiet and dark, through the stars."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "You ran out of oxygen. Always fix a hull breach!",
     },
 
     "ch1_patch_fix": {
@@ -505,8 +637,42 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Aim for the alien forest — the trees will cushion the crash!",
+                "next": "ch2_landing_forest",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "ch2_landing_forest": {
+        "id": "ch2_landing_forest",
+        "chapter": 2,
+        "chapter_title": "Planet Zorbax",
+        "title": "Into the Forest!",
+        "text": (
+            "You wrench the controls toward the silver-leafed forest at the "
+            "edge of the clearing and HOLD ON.\n\n"
+            "CRUNCH — the first tree hits the nose like a huge springy cushion. "
+            "The ship bounces. Straight up. "
+            "Then comes back down and hits ANOTHER tree.\n\n"
+            "BOINNNG.\n\n"
+            "Back up. Back down. Third tree.\n\n"
+            "BOINNNG.\n\n"
+            "On the third bounce, the Shooting Star sails gently through a gap "
+            "in the canopy and settles — perfectly upright — in a sunny clearing.\n\n"
+            "You look out the window. A dozen small green aliens are standing "
+            "at the treeline. They watched the whole thing. "
+            "They are completely motionless.\n\n"
+            "Then they look at each other. Then back at you.\n\n"
+            "Then they all start doing the alien version of a standing ovation — "
+            "antennae spinning wildly, tiny capes flapping."
+        ),
+        "choices": [],
+        "auto_next": "ch2_alien_welcome",
         "ending": None,
     },
 
@@ -562,9 +728,43 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Shout 'BACK OFF!' and wave your arms to scare them away!",
+                "next": "ch2_death_aliens",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "ch2_death_aliens": {
+        "id": "ch2_death_aliens",
+        "chapter": 2,
+        "chapter_title": "Planet Zorbax",
+        "title": "That Was Not a Good Idea.",
+        "text": (
+            "You wave your arms and shout.\n\n"
+            "The aliens stare at you.\n\n"
+            "They look at each other. Back at you. They make a sound — "
+            "not the happy kazoo noise. A different one. Lower. Slower.\n\n"
+            "All five of them take a step back.\n\n"
+            "Then all five of them raise tiny devices that look like they might "
+            "be communication tools, but definitely aren't.\n\n"
+            "You realise, a moment too late, that on Planet Zorbax, waving "
+            "your arms and shouting is the traditional way to challenge "
+            "someone to a duel.\n\n"
+            "You have just challenged FIVE ALIENS at once.\n\n"
+            "It turns out they take duels very seriously here.\n\n"
+            "The mission ends here, on a beautiful alien planet, "
+            "surrounded by very offended aliens in bow ties.\n\n"
+            "Next time: wave nicely."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "First contact rule: be friendly! Shouting is a duel challenge on Zorbax.",
     },
 
     "ch2_hiding": {
@@ -654,6 +854,46 @@ STORY = {
                 "next": "ch2_no_jetpack",
                 "requires_item": None,
                 "gives_item": None,
+            },
+            {
+                "label": "Offer your Stun Blaster as trade!",
+                "next": "ch2_blaster_trade",
+                "requires_item": "stun_blaster",
+                "gives_item": None,
+                "removes_item": "stun_blaster",
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch2_blaster_trade": {
+        "id": "ch2_blaster_trade",
+        "chapter": 2,
+        "chapter_title": "Planet Zorbax",
+        "title": "The Blaster Trade",
+        "text": (
+            "You pull out the Stun Blaster and hold it up.\n\n"
+            "The alien's eyes go ENORMOUS. Their antennae shoot straight up. "
+            "They lean so far over the counter they nearly fall off their stool.\n\n"
+            "They take the blaster very carefully with both hands, turn it over, "
+            "examine every detail, then point it at a nearby market stall "
+            "and — before you can say anything — PRESS THE BUTTON.\n\n"
+            "ZZZAP! The blue beam hits a display of floating snack-pods. "
+            "They all fall asleep simultaneously and drift gently to the ground. "
+            "The stall owner looks from the stall to the alien to you. "
+            "Then they start laughing.\n\n"
+            "All the other aliens start laughing. "
+            "The alien tests the stun beam again on a hat stand. Also asleep.\n\n"
+            "'MOST FASCINATING THING I HAVE EVER SEEN,' they announce, "
+            "and immediately hand you the jetpack. Deal done."
+        ),
+        "choices": [
+            {
+                "label": "Strap on the jetpack!",
+                "next": "ch2_volcano",
+                "requires_item": None,
+                "gives_item": "jetpack",
             },
         ],
         "auto_next": None,
@@ -745,8 +985,40 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Call into the cave — see if anything answers.",
+                "next": "ch2_cave_shout",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "ch2_cave_shout": {
+        "id": "ch2_cave_shout",
+        "chapter": 2,
+        "chapter_title": "Planet Zorbax",
+        "title": "Hello?",
+        "text": (
+            "You cup your hands around your mouth and shout into the cave:\n\n"
+            "'HELLO?'\n\n"
+            "Your voice bounces off a million crystals. "
+            "HELLO hello hello hello...\n\n"
+            "Silence.\n\n"
+            "Then — deep in the cave, something SHINES. "
+            "Just for a second. Brighter than before. Like something heard you "
+            "and wanted you to know.\n\n"
+            "You stare at the glow. The glow seems to stare back.\n\n"
+            "Then a small alien steps out from behind a crystal near the entrance — "
+            "one of the village aliens, who must have followed you. "
+            "They look at the glow. They look at you. "
+            "Their antennae wiggle with great urgency, pointing deeper into the cave.\n\n"
+            "Whatever is in there, the alien thinks you should find it."
+        ),
+        "choices": [],
+        "auto_next": "ch2_crystal_cave",
         "ending": None,
     },
 
@@ -837,6 +1109,71 @@ STORY = {
                 "next": "ch3_bay_b",
                 "requires_item": None,
                 "gives_item": None,
+            },
+            {
+                "label": "Orbit the station once first — look for any clues or other docking points.",
+                "next": "ch3_orbit_station",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch3_orbit_station": {
+        "id": "ch3_orbit_station",
+        "chapter": 3,
+        "chapter_title": "The Abandoned Space Station",
+        "title": "One Orbit",
+        "text": (
+            "You ease the Shooting Star into a slow orbit around the station. "
+            "The sensors sweep the hull as you go.\n\n"
+            "Interesting. Etchings on the metal — old mission logs, names, dates, "
+            "tiny drawings of stars and ships. Someone lived here once and "
+            "wanted the universe to know.\n\n"
+            "And there — on the far side of the ring — a third docking bay. "
+            "Bay C. No lights. Sensors say it's pressurised though, "
+            "and there's a faint power reading. Emergency supplies, maybe. "
+            "Long forgotten.\n\n"
+            "Mission Control: 'Explorer, we can see Bay C. "
+            "No one's been in there for a long time, but it looks intact.'"
+        ),
+        "choices": [
+            {
+                "label": "Dock at Bay C.",
+                "next": "ch3_bay_c",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch3_bay_c": {
+        "id": "ch3_bay_c",
+        "chapter": 3,
+        "chapter_title": "The Abandoned Space Station",
+        "title": "Bay C — Emergency Stores",
+        "text": (
+            "Bay C is dusty. Very dusty. "
+            "Your footprints are the first in a very long time.\n\n"
+            "Shelves run the length of the room — stacked with sealed containers. "
+            "Emergency rations, mostly. The labels are in an alien language "
+            "but the expiry dates are... hard to read. You decide not to eat any.\n\n"
+            "In the corner: a metal locker, slightly dented. You yank it open.\n\n"
+            "Inside, hanging on a hook, is a security blaster. Old model, "
+            "dusty grip — but the charge indicator glows green. "
+            "Still working after all these years.\n\n"
+            "You pick it up. Feels solid. Reliable. Good."
+        ),
+        "choices": [
+            {
+                "label": "Take the blaster and head to the Main Hall.",
+                "next": "ch3_main_hall",
+                "requires_item": None,
+                "gives_item": "stun_blaster",
             },
         ],
         "auto_next": None,
@@ -932,9 +1269,41 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "CHARGE at them with bare hands! AAARRGH!",
+                "next": "ch3_death_drones",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "ch3_death_drones": {
+        "id": "ch3_death_drones",
+        "chapter": 3,
+        "chapter_title": "The Abandoned Space Station",
+        "title": "Drones: 2. Explorer: 0.",
+        "text": (
+            "You charge at the drones with your bare hands.\n\n"
+            "The first drone dodges left.\n\n"
+            "The second drone dodges right.\n\n"
+            "You run directly between them and smack face-first into the wall.\n\n"
+            "The drones look at you lying on the floor. "
+            "One of them emits a very long, very flat 'BEEEEEP.' "
+            "The robotic voice says: 'THREAT LEVEL: EXTREMELY LOW.'\n\n"
+            "Both drones fire their stun beams simultaneously.\n\n"
+            "You wake up three hours later, back in your ship, "
+            "which the drones have very helpfully pushed out of the docking bay. "
+            "The station doors are sealed. A small sign has been placed on them.\n\n"
+            "It says: PLEASE DO NOT RETURN.\n\n"
+            "The mission is over. The drones were just doing their job."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "Security drones are not impressed by shouting. Try talking or hiding next time.",
     },
 
     "ch3_laser_battle": {
@@ -1059,8 +1428,39 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Ask your Robot Friend to interface with the station computer.",
+                "next": "ch3_robot_access",
+                "requires_item": "robot_friend",
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "ch3_robot_access": {
+        "id": "ch3_robot_access",
+        "chapter": 3,
+        "chapter_title": "The Abandoned Space Station",
+        "title": "Robot to the Rescue",
+        "text": (
+            "You point your robot friend at the wall beside the door. "
+            "It considers this for a moment, then rolls forward "
+            "and finds a small port, half-hidden behind a panel, "
+            "that you would never have noticed on your own.\n\n"
+            "It plugs in with a satisfying click.\n\n"
+            "BEEP. BOOP. BEEP BEEP BOOP BOOP BEEEEP.\n\n"
+            "Its eyes flash. It's working through the station's systems — "
+            "past the old security layers, past the locked archives, "
+            "right down to the maintenance override buried at the very bottom.\n\n"
+            "The door slides open. Smooth. Quiet. No grinding, no drama. "
+            "Just a soft hum and a gentle puff of old air.\n\n"
+            "The robot unplugs itself and turns to you.\n\n"
+            "'BEEP BOOP,' it says. Proudly."
+        ),
+        "choices": [],
+        "auto_next": "ch3_hull_breach",
         "ending": None,
     },
 
@@ -1144,6 +1544,12 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Strap on the Jetpack and FLY to the blast door!",
+                "next": "ch3_escaped_breach",
+                "requires_item": "jetpack",
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
@@ -1195,7 +1601,7 @@ STORY = {
             "you. It stops just in front of your cockpit window. A hatch opens.\n\n"
             "Inside: a very tall alien in a gold uniform with the most impressive "
             "antennae you have ever seen. They stare at you. At your battered, "
-            "dented, orange-foam-patched ship.\n\n"
+            "dented, visibly-repaired ship.\n\n"
             "Very slowly, they raise one hand.\n\n"
             "And wave."
         ),
@@ -1206,9 +1612,83 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "FLOOR IT — maximum engine speed — get away NOW!",
+                "next": "ch4_death_flee",
+                "requires_item": None,
+                "gives_item": None,
+            },
+            {
+                "label": "Broadcast a message of peace on all emergency radio channels.",
+                "next": "ch4_emergency_radio",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "ch4_emergency_radio": {
+        "id": "ch4_emergency_radio",
+        "chapter": 4,
+        "chapter_title": "The Final Mission",
+        "title": "On All Frequencies",
+        "text": (
+            "You key up every frequency on the radio panel — all of them, "
+            "from emergency channel one to the very last one that nobody "
+            "ever uses — and you speak very clearly:\n\n"
+            "'Hello. I'm a Space Explorer from Earth. I come in peace. "
+            "Also I am very small and my ship is a bit battered. "
+            "Please do not shoot.'\n\n"
+            "Silence. The targeting beams stay on.\n\n"
+            "Then — the targeting beams start blinking. All fourteen of them. "
+            "In a pattern. Like a rhythm.\n\n"
+            "Mission Control, very quietly: 'Explorer... I think they're laughing?'\n\n"
+            "The mothership's main screen lights up. A face fills your window — "
+            "tall, gold-uniformed, magnificent antennae — and the alien captain "
+            "is absolutely, unmistakably, completely delighted.\n\n"
+            "The targeting beams keep blinking. It is definitely laughing."
+        ),
+        "choices": [
+            {
+                "label": "Wave hello!",
+                "next": "ch4_weapons_lock",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch4_death_flee": {
+        "id": "ch4_death_flee",
+        "chapter": 4,
+        "chapter_title": "The Final Mission",
+        "title": "You Can't Outrun a City.",
+        "text": (
+            "You slam the throttle forward.\n\n"
+            "The Shooting Star's engines scream.\n\n"
+            "For about two seconds, you are moving quite fast.\n\n"
+            "The mothership — which is the size of a small city with engines "
+            "the size of office buildings — does not move for those two seconds.\n\n"
+            "Then it moves.\n\n"
+            "You are caught by a tractor beam before you've gone half a kilometre. "
+            "The Shooting Star stops dead. Every screen shows the same thing: "
+            "a very large alien face, looking extremely disappointed.\n\n"
+            "They waited fourteen million space-miles to say hello.\n\n"
+            "They waved.\n\n"
+            "And you ran away.\n\n"
+            "'BZZZT — glorp — WE JUST WANTED TO BE FRIENDS — glorp — BZZZT'\n\n"
+            "They tow your ship back to Earth. Mission Control doesn't ask "
+            "many questions. The aliens never call again.\n\n"
+            "Next time: wave back."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "You can't outrun a mothership. When a giant alien fleet waves at you, wave back!",
     },
 
     "ch4_weapons_lock": {
@@ -1223,9 +1703,9 @@ STORY = {
             "You keep waving. And then — because you genuinely cannot help "
             "yourself — you smile.\n\n"
             "The alien tilts their head. They look at your ship. "
-            "At the orange foam blob on section C. At the enormous dent "
-            "in the hull. At the piece of silver tree still jammed in the "
-            "landing gear from the cliff landing.\n\n"
+            "At the enormous dents along the hull. At the piece of silver tree "
+            "still jammed in the landing gear. At the general state of the ship, "
+            "which has clearly had a journey.\n\n"
             "They look back at you.\n\n"
             "They make a sound. A sort of kazoo-mixed-with-laughter noise. "
             "They make it louder. Then louder still.\n\n"
@@ -1276,6 +1756,50 @@ STORY = {
             {
                 "label": "You have no snacks — challenge them to a dance-off instead!",
                 "next": "ch4_dance_off",
+                "requires_item": None,
+                "gives_item": None,
+            },
+            {
+                "label": "Show them your Star Badge — you defeated their own security drones!",
+                "next": "ch4_badge_show",
+                "requires_item": "star_badge",
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch4_badge_show": {
+        "id": "ch4_badge_show",
+        "chapter": 4,
+        "chapter_title": "The Final Mission",
+        "title": "The Badge",
+        "text": (
+            "You reach into your suit and hold up the star badge you took "
+            "from the sleeping security drone. 'BEST SECURITY,' it says, "
+            "in small engraved letters.\n\n"
+            "The Captain goes completely still.\n\n"
+            "Every single antenna on their head stops moving.\n\n"
+            "Very quietly: '...Is that... a Station Omega security drone badge?'\n\n"
+            "'Yes,' you say.\n\n"
+            "Another very long pause.\n\n"
+            "'YOU DEFEATED THE STATION OMEGA SECURITY DRONES. AND TOOK. THEIR BADGE.'\n\n"
+            "You nod.\n\n"
+            "The Captain turns to the rest of the bridge and says something in Zorbian. "
+            "There is a moment of complete silence across the entire mothership.\n\n"
+            "Then: absolute uproar. Cheering, kazoo fanfares, "
+            "at least one alien fainting dramatically.\n\n"
+            "'WE HAVE BEEN TRYING TO RETIRE THOSE DRONES FOR FORTY YEARS. "
+            "FORTY! YEARS! THEY KEPT REFUSING! THEY SAID THEY WERE TOO IMPORTANT! "
+            "AND YOU — ONE SMALL PINK CREATURE — YOU JUST — IN ONE VISIT —'\n\n"
+            "The Captain can barely speak through the laughter.\n\n"
+            "'YOU ARE A LEGEND. WE DECLARE FRIENDSHIP IMMEDIATELY. NO FURTHER QUESTIONS.'"
+        ),
+        "choices": [
+            {
+                "label": "Accept the title!",
+                "next": "ch4_alliance",
                 "requires_item": None,
                 "gives_item": None,
             },
@@ -1374,6 +1898,48 @@ STORY = {
             },
             {
                 "label": "You're ready — head for home!",
+                "next": "ch4_homeward",
+                "requires_item": None,
+                "gives_item": None,
+            },
+            {
+                "label": "Ask the Zorbians if they could help repair the Shooting Star first.",
+                "next": "ch4_ship_repair",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "ch4_ship_repair": {
+        "id": "ch4_ship_repair",
+        "chapter": 4,
+        "chapter_title": "The Final Mission",
+        "title": "The Repair Crew",
+        "text": (
+            "'Actually,' you say, 'my ship is a little... worn. "
+            "Do you think your engineers could take a look?'\n\n"
+            "The Captain makes one call.\n\n"
+            "Fifty tiny Zorbian engineers arrive in minutes. "
+            "They swarm the Shooting Star, arguing enthusiastically with each other "
+            "about the most interesting way to fix things. "
+            "Two of them get into a debate about the dent that lasts six minutes. "
+            "A third one just fixes the dent while the others are still arguing.\n\n"
+            "Forty-five minutes later, the Shooting Star gleams like it just "
+            "rolled off the factory floor. The dents are gone. "
+            "The hull is smooth and bright. The silver tree has been carefully "
+            "removed from the landing gear and — this is a very nice touch — "
+            "replanted in a small pot and placed in the cockpit as a souvenir.\n\n"
+            "Your robot friend supervised the whole operation and beeped "
+            "approvingly at regular intervals.\n\n"
+            "The lead engineer gives you a thumbs up. (They had clearly "
+            "looked up what thumbs up means. Very touching.)"
+        ),
+        "choices": [
+            {
+                "label": "Thank them and head for home!",
                 "next": "ch4_homeward",
                 "requires_item": None,
                 "gives_item": None,

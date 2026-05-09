@@ -101,6 +101,39 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Head toward the mountain cave — punch a few trees on the way.",
+                "next": "mc_cave_start",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_cave_start": {
+        "id": "mc_cave_start",
+        "chapter": 1,
+        "chapter_title": "Day One",
+        "title": "Mountain Bound!",
+        "text": (
+            "On the way to the mountain cave you bash a few oak trees and craft "
+            "a quick wooden pickaxe. Sticks, planks, done.\n\n"
+            "Inside the cave entrance you find coal seams right away. You pop "
+            "them into a crafting bench alongside some sticks: torches! "
+            "You place them on the walls one by one. The cave lights up orange "
+            "and warm. It smells like stone and adventure.\n\n"
+            "A bat zooms past your ear. You do not scream. (You scream a little.)\n\n"
+            "The sun is getting lower outside. Better find shelter before dark!"
+        ),
+        "choices": [
+            {
+                "label": "Head back out to find shelter before dark.",
+                "next": "mc_shelter_choice",
+                "requires_item": None,
+                "gives_item": "wooden_pickaxe",
+            },
         ],
         "auto_next": None,
         "ending": None,
@@ -189,8 +222,34 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Dig a hidey-hole straight into the mountainside — fastest option!",
+                "next": "mc_hidey_hole",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_hidey_hole": {
+        "id": "mc_hidey_hole",
+        "chapter": 1,
+        "chapter_title": "Day One",
+        "title": "The Hidey-Hole",
+        "text": (
+            "You dig three blocks into the mountain, spin around, and place "
+            "dirt blocks behind you.\n\n"
+            "That's it. That's your house.\n\n"
+            "No door. No windows. Barely room to turn around. "
+            "Outside: zombies groaning, skeletons clattering, a Creeper going "
+            "'sssss' very nearby.\n\n"
+            "Inside: you, in the dark, eating a carrot.\n\n"
+            "It is somehow perfect."
+        ),
+        "choices": [],
+        "auto_next": "mc_morning",
         "ending": None,
     },
 
@@ -227,8 +286,8 @@ STORY = {
             "quickly craft some torches from sticks and coal you find on the "
             "floor, and pop them on the walls.\n\n"
             "Outside: monsters. Inside: cozy cave. Perfect.\n\n"
-            "There's a wooden pickaxe here if you need one — looks like someone "
-            "else was here once. They left in a hurry.\n\n"
+            "The broken handle of an old wooden pickaxe rests against the wall — "
+            "someone was here before you, once. They left in a hurry.\n\n"
             "You set up a small crafting bench and wait out the night. "
             "By morning you're ready for real mining."
         ),
@@ -283,8 +342,34 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Head back to that mountain cave — you already know the way!",
+                "next": "mc_explore_known_cave",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_explore_known_cave": {
+        "id": "mc_explore_known_cave",
+        "chapter": 2,
+        "chapter_title": "Going Underground",
+        "title": "Back to the Mountain Cave",
+        "text": (
+            "You return to the mountain cave entrance you spotted on Day One. "
+            "No digging needed — it's already there! Very efficient.\n\n"
+            "You head down into the darkness, torches crackling on the walls, "
+            "and almost immediately the tunnel opens into a massive cave system. "
+            "Bats scatter in every direction like a flying explosion of squeaks.\n\n"
+            "Iron ore glitters on every wall. And from somewhere deep below: "
+            "a faint blue shimmer.\n\n"
+            "You've only been here five seconds and already it's incredible."
+        ),
+        "choices": [],
+        "auto_next": "mc_cave_system",
         "ending": None,
     },
 
@@ -374,8 +459,36 @@ STORY = {
                 "requires_item": None,
                 "gives_item": "iron_sword",
             },
+            {
+                "label": "Set up a proper mining camp here first — torches everywhere, crafting table out.",
+                "next": "mc_mining_camp",
+                "requires_item": None,
+                "gives_item": "iron_sword",
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_mining_camp": {
+        "id": "mc_mining_camp",
+        "chapter": 2,
+        "chapter_title": "Going Underground",
+        "title": "Base Camp Underground",
+        "text": (
+            "You take five minutes to be sensible. Torches on every wall — "
+            "no monster is sneaking up on you in HERE. Crafting bench placed "
+            "on a flat rock. You smelt your iron ore right here, eat a piece "
+            "of bread, and assess the situation like a professional.\n\n"
+            "While placing the last torch, you notice a third tunnel — going "
+            "STRAIGHT DOWN, with an orange glow at the bottom. Lava. "
+            "Which means... obsidian potential.\n\n"
+            "But first: you mine all the nearby diamonds (they are RIGHT THERE "
+            "and you're not walking past them). Then you follow the lava tunnel. "
+            "This was an excellent plan."
+        ),
+        "choices": [],
+        "auto_next": "mc_diamond_vein",
         "ending": None,
     },
 
@@ -403,9 +516,40 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Freeze completely still — maybe it won't notice you.",
+                "next": "mc_death_creeper",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "mc_death_creeper": {
+        "id": "mc_death_creeper",
+        "chapter": 2,
+        "chapter_title": "Going Underground",
+        "title": "BOOM.",
+        "text": (
+            "You freeze completely still.\n\n"
+            "The Creeper stares at you.\n\n"
+            "You stare at the Creeper.\n\n"
+            "It is still hissing. 'Sssssssss...'\n\n"
+            "That means it is ALREADY EXPLODING. Freezing doesn't stop the "
+            "explosion. Freezing is for statues, not for Creepers. "
+            "These are very different situations.\n\n"
+            "BOOOOOOM.\n\n"
+            "You respawn at your bed, blinking in the morning light.\n\n"
+            "Your inventory is empty. The cave is rubble.\n\n"
+            "On the bright side: now you know what NOT to do.\n\n"
+            "Never freeze near a hissing Creeper. Run or fight — never freeze."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "Creepers don't care if you stand still. Run away or fight!",
     },
 
     "mc_creeper_fight": {
@@ -551,6 +695,39 @@ STORY = {
                 "next": "mc_ruined_portal",
                 "requires_item": None,
                 "gives_item": None,
+            },
+            {
+                "label": "Craft Diamond Armor before going anywhere near the Nether.",
+                "next": "mc_craft_armor",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_craft_armor": {
+        "id": "mc_craft_armor",
+        "chapter": 3,
+        "chapter_title": "The Nether",
+        "title": "Diamond Armor!",
+        "text": (
+            "You've got diamonds and you are NOT an idiot.\n\n"
+            "You spend an hour at your crafting table making a full diamond "
+            "chestplate, leggings, boots, and helmet. Each piece clicks together "
+            "perfectly. You put it on.\n\n"
+            "You look INCREDIBLE.\n\n"
+            "You are basically indestructible. The flower by your door sways "
+            "in the breeze, as if impressed.\n\n"
+            "Now THAT is how you prepare for another dimension."
+        ),
+        "choices": [
+            {
+                "label": "Now build that Nether portal!",
+                "next": "mc_portal_built",
+                "requires_item": None,
+                "gives_item": "diamond_armor",
             },
         ],
         "auto_next": None,
@@ -699,8 +876,36 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Put on your Diamond Armor and just walk straight through — take the hits!",
+                "next": "mc_blaze_tank",
+                "requires_item": "diamond_armor",
+                "gives_item": "blaze_rod",
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_blaze_tank": {
+        "id": "mc_blaze_tank",
+        "chapter": 3,
+        "chapter_title": "The Nether",
+        "title": "Basically Indestructible",
+        "text": (
+            "You stride into the fortress like you own the place.\n\n"
+            "A Blaze fires a fireball directly at your chest. "
+            "CLANG — it bounces off your diamond chestplate. "
+            "The Blaze looks confused.\n\n"
+            "Another fireball. CLANG.\n\n"
+            "You walk calmly forward, collect the Blaze Rod right out of "
+            "the Blaze's spinning hands (basically), and keep walking. "
+            "Three Blazes try to stop you. None succeed.\n\n"
+            "The fortress falls silent as you exit.\n\n"
+            "Diamond armor was absolutely worth it."
+        ),
+        "choices": [],
+        "auto_next": "mc_nether_exit",
         "ending": None,
     },
 
@@ -809,9 +1014,41 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Stare it down — a staring contest. Refuse to blink.",
+                "next": "mc_death_enderman",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
         "ending": None,
+    },
+
+    "mc_death_enderman": {
+        "id": "mc_death_enderman",
+        "chapter": 4,
+        "chapter_title": "The End",
+        "title": "The Staring Contest You Could Not Win.",
+        "text": (
+            "You look the Enderman directly in its glowing purple eyes.\n\n"
+            "The Enderman looks at you.\n\n"
+            "You do not blink.\n\n"
+            "The Enderman SHRIEKS. It teleports directly on top of you. "
+            "It hits you once. You fly backwards. It teleports behind you "
+            "and hits you again. It teleports above you and hits you a third time.\n\n"
+            "In the time it takes you to swing your sword once, the Enderman "
+            "has already teleported eleven times.\n\n"
+            "You did not blink.\n\n"
+            "But you did die.\n\n"
+            "You respawn at your base. The Enderman has vanished into the night, "
+            "probably very pleased with itself.\n\n"
+            "Next time: attack without looking at its eyes. Sneak attacks work much better."
+        ),
+        "choices": [],
+        "auto_next": None,
+        "ending": "lose",
+        "lose_reason": "Endermen get very angry when you stare at them. Sneak attack instead!",
     },
 
     "mc_enderman_fight": {
@@ -844,6 +1081,41 @@ STORY = {
                 "requires_item": None,
                 "gives_item": "ender_pearls",
             },
+            {
+                "label": "Hunt a few more Endermen — the more pearls the better!",
+                "next": "mc_more_pearls",
+                "requires_item": None,
+                "gives_item": "ender_pearls",
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_more_pearls": {
+        "id": "mc_more_pearls",
+        "chapter": 4,
+        "chapter_title": "The End",
+        "title": "Pearl Collector",
+        "text": (
+            "You spend the rest of the night fighting Endermen. "
+            "By morning you have nine Ender Pearls and a begrudging respect "
+            "for teleporting monsters.\n\n"
+            "On the way back through a village, a librarian villager waves at "
+            "you from their doorstep and holds up something green and swirling "
+            "— an Eye of Ender! Apparently they trade these. You hand over "
+            "some emeralds you found underground.\n\n"
+            "The librarian nods. Deal done. The villager makes the 'HMMM' noise "
+            "and goes back inside.\n\n"
+            "You now have more Ender Pearls than you will ever need. Excellent."
+        ),
+        "choices": [
+            {
+                "label": "Now find the stronghold!",
+                "next": "mc_stronghold_search",
+                "requires_item": None,
+                "gives_item": "eye_of_ender",
+            },
         ],
         "auto_next": None,
         "ending": None,
@@ -874,6 +1146,12 @@ STORY = {
             {
                 "label": "Search for the stronghold — maybe Eyes are in a chest.",
                 "next": "mc_stronghold_search",
+                "requires_item": None,
+                "gives_item": "ender_pearls",
+            },
+            {
+                "label": "Hunt a few more Endermen — the more pearls the better!",
+                "next": "mc_more_pearls",
                 "requires_item": None,
                 "gives_item": "ender_pearls",
             },
@@ -997,8 +1275,34 @@ STORY = {
                 "requires_item": None,
                 "gives_item": None,
             },
+            {
+                "label": "Take one moment to check your gear — then jump!",
+                "next": "mc_portal_prep",
+                "requires_item": None,
+                "gives_item": None,
+            },
         ],
         "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_portal_prep": {
+        "id": "mc_portal_prep",
+        "chapter": 4,
+        "chapter_title": "The End",
+        "title": "Gear Check",
+        "text": (
+            "You look at the swirling darkness of the portal.\n\n"
+            "You check your sword. Sharpened. Your armor. Solid. "
+            "Your diamond pickaxe. Ready. You eat a golden apple you've been "
+            "saving since you found it in a stronghold chest — now is "
+            "DEFINITELY the time. Your health fills completely.\n\n"
+            "The portal hums. The Dragon is waiting. "
+            "The darkness churns like it knows you're coming.\n\n"
+            "You've never been more ready."
+        ),
+        "choices": [],
+        "auto_next": "mc_end_arrive",
         "ending": None,
     },
 
@@ -1029,6 +1333,41 @@ STORY = {
             {
                 "label": "Charge straight at the dragon — no time for strategy!",
                 "next": "mc_charge_dragon",
+                "requires_item": None,
+                "gives_item": None,
+            },
+            {
+                "label": "Grab your bow — shoot the End Crystals from the ground!",
+                "next": "mc_arrow_crystals",
+                "requires_item": None,
+                "gives_item": None,
+            },
+        ],
+        "auto_next": None,
+        "ending": None,
+    },
+
+    "mc_arrow_crystals": {
+        "id": "mc_arrow_crystals",
+        "chapter": 4,
+        "chapter_title": "The End",
+        "title": "Bow vs. Crystals",
+        "text": (
+            "You found a bow and arrows in the stronghold. Smart thinking.\n\n"
+            "Instead of climbing the obsidian pillars (terrifying, windy, "
+            "very tall), you aim your bow at the nearest End Crystal and let fly.\n\n"
+            "TWANG — first crystal explodes in a burst of white. "
+            "The Dragon shrieks. TWANG — second crystal. TWANG — third.\n\n"
+            "The Endermen on the island watch you in bewildered silence, "
+            "like they've never seen anything so efficient.\n\n"
+            "Twelve shots. Twelve explosions. The Dragon circles without "
+            "healing now. There's nothing between you and it.\n\n"
+            "You lower your bow and draw your sword."
+        ),
+        "choices": [
+            {
+                "label": "Face the Dragon!",
+                "next": "mc_dragon_fight",
                 "requires_item": None,
                 "gives_item": None,
             },
